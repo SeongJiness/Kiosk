@@ -1,0 +1,6 @@
+.Modal-Content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  transform: translateX(500px);
+}

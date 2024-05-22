@@ -1,0 +1,64 @@
+.coffee-card-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 340px;
+  height: 250px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Margin between each coffee card container */
+  transform: translateY(-30px);
+}
+
+.coffee-card-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  float: left;
+}
+
+.card-detail {
+  margin-left: 30px;
+  text-align: center;
+  transform: translateY(-30px);
+}
+
+.price {
+  margin-left: 70px;
+}
+
+.text-container {
+  display: flex;
+  gap: 140px; /* 원하는 간격으로 설정합니다 */
+  transform: translateY(-30px);
+  font-weight: bold;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-35px);
+  float: left;
+}
+
+.options h4 {
+  margin-right: 120px;
+}
+
+.options button {
+  height: 25px;
+  margin-right: 20px;
+}
+
+.receive {
+  width: 340px; /* �먰븯�� �덈퉬 �ㅼ젙 */
+  height: 40px; /* �먰븯�� �믪씠 �ㅼ젙 */
+  font-size: 16px; /* �띿뒪�� �ш린 �ㅼ젙 */
+  background-color: #007bff; /* 諛곌꼍�� �ㅼ젙 */
+  color: #ffffff; /* �띿뒪�� �됱긽 �ㅼ젙 */
+  border: none; /* �뚮몢由� �쒓굅 */
+  border-radius: 5px; /* 紐⑥꽌由� �κ�寃� 留뚮뱾湲� */
+  cursor: pointer; /* 而ㅼ꽌 紐⑥뼇 蹂�寃� */
+  margin-right: 50px;
+  margin-top: 10px;
+  transform: translateY(-35px);
+}

@@ -1,0 +1,106 @@
+.menu-container {
+  display: flex;
+}
+
+.app-container {
+  margin-left: 150px; /* 사이드바 너비 + 여백 */
+  width: calc(100% - 220px);
+  padding: 20px;
+}
+
+/* 기존 스타일 유지 */
+.card-container {
+  display: flex;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.card {
+  display: flex; /* 추가: flex를 사용하여 내부 아이템을 중앙에 배치 */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 13px;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  image-rendering: optimizeQuality;
+  align-self: center;
+}
+
+.card p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-area {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 210px;
+}
+
+.coffee-card {
+  width: 171px;
+  padding: 10px;
+  text-align: center;
+}
+
+.coffee-card:first-child {
+  margin-right: 220px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr)); /* 그리드 크기 조정 */
+  max-width: calc(
+    100% - 250px
+  ); /* 오른쪽 쇼핑 카트 공간만큼 가로 최대 크기 제한 */
+  width: 1000px;
+}
+
+.slider-container {
+  height: 100px;
+}
+
+.slider-controls {
+  margin-left: 365px;
+  max-width: 95%;
+  height: auto;
+  display: flex;
+  transform: translateY(-35px);
+}
+
+.slider-controls button {
+  margin-right: 10px; /* 버튼 사이의 간격을 조금 좁힘 */
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.slider-controls button:hover {
+  background-color: #0056b3;
+}
+
+.title {
+  font-size: 10px;
+  max-width: 95%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transform: translateY(-20px);
+  margin-left: 10px; /* 제목을 왼쪽으로 이동 */
+}

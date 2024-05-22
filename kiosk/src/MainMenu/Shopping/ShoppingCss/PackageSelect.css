@@ -1,0 +1,42 @@
+img {
+  width: 300px;
+  height: 300px;
+}
+
+.package-modal {
+  width: 700px;
+  height: 500px;
+  margin: auto;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.package-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 680px;
+  height: 450px;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 380px;
+  margin-top: 150px;
+  border-radius: 20px; 
+}
+
+.package_title {
+  color: white;
+  background: rgba(255, 165, 0, 0.5);
+  width: 400px;
+  height: 50px;
+  margin-right: 70px;
+  transform: translateY(-40px) translateX(-40px);
+  padding-left: 280px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.open {
+  margin-left: 500px;
+  margin-top: 800px;
+}

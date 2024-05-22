@@ -1,0 +1,32 @@
+.Sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 150px; /* 사이드바 너비 */
+  background-color: #f8f9fa;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.Sidebar-Wrapper {
+  padding: 20px 10px;
+}
+
+.Sidebar-Menu {
+  margin-bottom: 2rem;
+}
+
+.SidebarListTitle img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 100px;
+    margin-left: 25px; /* 이미지를 오른쪽으로 이동 */
+  }
+
+.SidebarListItem img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 50px;
+  margin-left: 35px;
+}
