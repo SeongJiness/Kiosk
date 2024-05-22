@@ -80,3 +80,9 @@
   position: absolute;
   bottom: 20px; /* Position at the bottom of the modal */
 }
+
+@media (max-width: 1024px) and (min-height: 600px) {
+  .Table-modal {
+    width: 40%;
+  }
+}
