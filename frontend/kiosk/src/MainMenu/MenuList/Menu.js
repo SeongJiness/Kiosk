@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MenuListCss/Menu.css";
 import "./MenuListCss/Sidebar.css"; // Sidebar CSS 추가
 import ShoppingCart from "../Shopping/ShoppingCart.js";
 import CoffeeCard from "./CoffeeCard.js";
+import Login from "../Login/Login.js"; // 확장자 추가
 
 import allMenu from "./images/allmenu.png";
 import coffee from "./images/coffee.png";
@@ -29,6 +30,9 @@ function Sidebar() {
           <div className="SidebarListItem">
             <img src="/CaffeIcon/Option.png" alt="OptionLogo" />
           </div>
+          <div className="SidebarListItem">
+            <Login /> {/* 로그인 버튼 추가 */}
+          </div>
         </div>
       </div>
     </div>
@@ -38,6 +42,17 @@ function Sidebar() {
 function Menu({ onCheckout }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [cartItems, setCartItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [nickname, setNickname] = useState("");
+
+  useEffect(() => {
+    const loggedIn = sessionStorage.getItem("isLoggedIn");
+    const nickname = sessionStorage.getItem("nickname");
+    if (loggedIn) {
+      setIsLoggedIn(true);
+      setNickname(nickname);
+    }
+  }, []);
 
   const removeFromCart = (itemToRemove) => {
     const existingItemIndex = cartItems.findIndex(
@@ -138,6 +153,20 @@ function Menu({ onCheckout }) {
     <div className="menu-container">
       <Sidebar /> {/* Sidebar 통합 */}
       <div className="app-container">
+        <div className="login-status">
+          {isLoggedIn ? (
+            <div>
+              <p className="welcome-text">{nickname} 님 환영합니다!</p>
+              <p className="status-text">닉네임: {nickname}</p>
+              <p className="status-text status-on">로그인 상태: ON</p>
+            </div>
+          ) : (
+            <div>
+              <p className="welcome-text">비회원 로그인</p>
+              <p className="status-text status-off">로그인 상태: OFF</p>
+            </div>
+          )}
+        </div>
         <div className="card-container">
           <div className="card">
             <img src={allMenu} alt="AllMenu" />
@@ -164,6 +193,7 @@ function Menu({ onCheckout }) {
             <p>Dessert</p>
           </div>
         </div>
+
         <div className="title">
           <h1>Coffee Menu</h1>
           <p>메뉴 목록: {menuItems.length}개</p>

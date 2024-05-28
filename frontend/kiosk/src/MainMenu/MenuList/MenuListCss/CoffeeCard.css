@@ -1,121 +1,156 @@
-/* 기존 스타일 유지 */
+/* src/MainMenu/MenuListCss/CoffeeCard.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 .coffee-card-container {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
   padding: 20px;
   width: 340px;
-  height: 250px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Margin between each coffee card container */
-  transform: translateY(-30px);
+  height: 370px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; /* 간격을 좁히기 위해 margin-bottom 값을 줄임 */
+  margin-right: 30px; /* 간격을 좁히기 위해 margin-right 값을 줄임 */
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Roboto", sans-serif;
+}
+
+.coffee-card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .coffee-card-image img {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  float: left;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
 .card-detail {
-  margin-left: 30px;
   text-align: center;
-  transform: translateY(-30px);
+  margin-bottom: 15px;
 }
 
-.price {
-  margin-left: 70px;
+.card-detail h2 {
+  font-size: 18px;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.card-detail p {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.card-detail .price {
+  font-size: 16px;
+  color: #007bff;
+  margin: 10px 0 0 0;
+  font-weight: 700;
 }
 
 .text-container {
   display: flex;
-  gap: 140px; /* 원하는 간격으로 설정합니다 */
-  transform: translateY(-30px);
-  font-weight: bold;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 20px; /* 간격을 줄였습니다 */
+  transform: translateY(-10px); /* 위로 10px 올립니다 */
+  width: 200px;
 }
 
 .options {
   display: flex;
   justify-content: space-between;
-  transform: translateY(-35px);
-  float: left;
-}
-
-.options h4 {
-  margin-right: 120px;
+  gap: 10px;
+  margin-bottom: 5px; /* 간격을 줄였습니다 */
+  transform: translateY(-10px); /* 위로 10px 올립니다 */
 }
 
 .options button {
-  height: 25px;
-  margin-right: 20px;
+  flex: 1;
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 8px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.options button:hover {
+  background-color: #ddd;
 }
 
 .receive {
-  width: 340px; /* 너비 설정 */
-  height: 40px; /* 높이 설정 */
-  font-size: 16px; /* 폰트 크기 설정 */
-  background-color: #007bff; /* 배경색 설정 */
-  color: #ffffff; /* 폰트색 설정 */
-  border: none; /* 테두리 제거 */
-  border-radius: 5px; /* 모서리 둥글게 설정 */
-  cursor: pointer; /* 커서 포인터로 변경 */
-  margin-right: 50px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
   margin-top: 10px;
-  transform: translateY(-35px);
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transform: translateY(-10px); /* 위로 10px 올립니다 */
+}
+
+.receive:hover {
+  background-color: #0056b3;
 }
 
 /* 반응형 웹페이지 스타일 추가 */
 @media (max-width: 1200px) {
   .coffee-card-container {
     width: 300px;
-    height: 230px;
+    height: 290px;
   }
 
-  .text-container {
-    gap: 120px;
-  }
-
-  .options h4 {
-    margin-right: 100px;
+  .options button {
+    font-size: 12px;
   }
 
   .receive {
-    width: 300px;
+    font-size: 14px;
+    padding: 8px;
   }
 }
 
 @media (max-width: 1024px) and (min-height: 600px) {
   .options button {
-    margin-right: 10px; /* 버튼 사이 간격 줄이기 */
-    width: 29px;
+    margin-right: 10px;
     font-size: 10px;
-    text-align: center;
   }
 
   .coffee-card-container {
-    width: 140%;
+    width: 210%;
+    height: auto;
   }
 
   .card-detail {
     width: 100%;
-    font-size: 10px;
-    height: 100px;
-    margin-top: 40px;
+    font-size: 14px;
   }
 
   .receive {
     width: 100%;
   }
 
-  .text-container p {
-    width: 2%;
+  .text-container {
+    width: 140px;
   }
 }
 
 @media (max-width: 768px) {
   .coffee-card-container {
     width: 260px;
-    height: 210px;
+    height: auto;
   }
 
   .coffee-card-image img {
@@ -124,35 +159,21 @@
   }
 
   .card-detail {
-    margin-left: 20px;
-    transform: translateY(-20px);
-  }
-
-  .price {
-    margin-left: 50px;
-  }
-
-  .text-container {
-    gap: 80px;
-    transform: translateY(-20px);
+    margin-left: 0;
   }
 
   .options {
     flex-direction: column;
-    transform: translateY(-20px);
-  }
-
-  .options h4 {
-    margin-right: 0;
+    gap: 5px;
   }
 
   .options button {
     margin-right: 0;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   .receive {
-    width: 260px;
+    width: 100%;
     margin-right: 0;
     margin-top: 10px;
   }
@@ -162,7 +183,7 @@
   .coffee-card-container {
     width: 100%;
     height: auto;
-    padding: 10px;
+    padding: 15px;
   }
 
   .coffee-card-image img {
@@ -171,32 +192,16 @@
   }
 
   .card-detail {
-    margin-left: 10px;
-    transform: translateY(0);
-  }
-
-  .price {
     margin-left: 0;
-    text-align: left;
-  }
-
-  .text-container {
-    flex-direction: column;
-    gap: 10px;
-    transform: translateY(0);
   }
 
   .options {
     flex-direction: column;
     align-items: flex-start;
-    transform: translateY(0);
-  }
-
-  .options h4 {
-    margin-right: 0;
   }
 
   .options button {
+    width: 100%;
     margin-right: 0;
     margin-top: 5px;
   }

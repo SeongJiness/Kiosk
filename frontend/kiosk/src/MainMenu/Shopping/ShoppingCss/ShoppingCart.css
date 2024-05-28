@@ -64,7 +64,7 @@
 
 @media (max-width: 1024px) and (min-height: 600px) {
   .ShoppingCart-Container {
-    width: 250px; /* 1024*600 해상도에서 장바구니 너비 줄이기 */
+    width: 300px; /* 1024*600 해상도에서 장바구니 너비 줄이기 */
   }
 
   .ShoppingCart-Main button,
