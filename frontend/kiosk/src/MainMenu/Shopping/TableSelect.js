@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ShoppingCss/TableSelect.css";
 import Modal from "react-modal";
 import Payment from "./Payment.js";
@@ -9,6 +9,7 @@ const TableSelect = ({ onClose, totalPrice, onCheckout }) => {
   const [selectedTable, setSelectedTable] = useState(null);
   const [tablePrices, setTablePrices] = useState({}); // Store prices for each table
   const [disabledTables, setDisabledTables] = useState([]);
+  const intervalRef = useRef({}); // Ref for storing interval IDs
 
   // Load disabled tables from local storage on component mount
   useEffect(() => {
@@ -35,6 +36,11 @@ const TableSelect = ({ onClose, totalPrice, onCheckout }) => {
         setDisabledTables((prev) => prev.filter((t) => t !== table));
         localStorage.removeItem(`table_${table}_endTime`);
       }, remainingTime);
+    });
+
+    // Store interval IDs in intervalRef
+    intervals.forEach((interval, index) => {
+      intervalRef.current[disabledTables[index]] = interval;
     });
 
     return () => intervals.forEach(clearTimeout);
@@ -91,6 +97,24 @@ const TableSelect = ({ onClose, totalPrice, onCheckout }) => {
     return disabledTables.includes(tableNumber);
   };
 
+  const handleUsageEnd = (tableNumber) => {
+    clearTimeoutCountdown(tableNumber);
+    setSelectedTable(null); // Reset selected table
+    alert(`테이블 ${tableNumber}의 사용이 종료되었습니다.`);
+  };
+
+  const clearTimeoutCountdown = (tableNumber) => {
+    // Clear countdown interval
+    const endTimeKey = `table_${tableNumber}_endTime`;
+    const remainingTime = localStorage.getItem(endTimeKey);
+    if (remainingTime) {
+      clearTimeout(intervalRef.current[tableNumber]);
+      localStorage.removeItem(endTimeKey);
+      // Remove the table from disabledTables state
+      setDisabledTables((prev) => prev.filter((t) => t !== tableNumber));
+    }
+  };
+
   return (
     <div>
       <Modal
@@ -117,31 +141,11 @@ const TableSelect = ({ onClose, totalPrice, onCheckout }) => {
                 </td>
                 <td>
                   <button
-                    onClick={() => handleTableClick(2)}
-                    className={selectedTable === 2 ? "selected" : ""}
-                    disabled={isTableDisabled(2)}
-                  >
-                    3
-                  </button>
-                </td>
-                <td>
-                  <button
                     onClick={() => handleTableClick(3)}
                     className={selectedTable === 3 ? "selected" : ""}
                     disabled={isTableDisabled(3)}
                   >
-                    5
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button
-                    onClick={() => handleTableClick(4)}
-                    className={selectedTable === 4 ? "selected" : ""}
-                    disabled={isTableDisabled(4)}
-                  >
-                    2
+                    3
                   </button>
                 </td>
                 <td>
@@ -149,6 +153,61 @@ const TableSelect = ({ onClose, totalPrice, onCheckout }) => {
                     onClick={() => handleTableClick(5)}
                     className={selectedTable === 5 ? "selected" : ""}
                     disabled={isTableDisabled(5)}
+                  >
+                    5
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  {isTableDisabled(1) && (
+                    <button
+                      className="Usage_end_btn"
+                      onClick={() => handleUsageEnd(1)}
+                    >
+                      사용종료
+                    </button>
+                  )}
+                </td>
+
+                <td>
+                  {isTableDisabled(3) && (
+                    <button
+                      className="Usage_end_btn"
+                      onClick={() => handleUsageEnd(3)}
+                    >
+                      사용종료
+                    </button>
+                  )}
+                </td>
+
+                <td>
+                  {isTableDisabled(5) && (
+                    <button
+                      className="Usage_end_btn"
+                      onClick={() => handleUsageEnd(5)}
+                    >
+                      사용종료
+                    </button>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button
+                    onClick={() => handleTableClick(2)}
+                    className={selectedTable === 2 ? "selected" : ""}
+                    disabled={isTableDisabled(2)}
+                  >
+                    2
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleTableClick(4)}
+                    className={selectedTable === 4 ? "selected" : ""}
+                    disabled={isTableDisabled(4)}
                   >
                     4
                   </button>
@@ -162,6 +221,34 @@ const TableSelect = ({ onClose, totalPrice, onCheckout }) => {
                     6
                   </button>
                 </td>
+              </tr>
+              <tr>
+                {isTableDisabled(2) && (
+                  <button
+                    className="Usage_end_btn"
+                    onClick={() => handleUsageEnd(2)}
+                  >
+                    사용종료
+                  </button>
+                )}
+
+                {isTableDisabled(4) && (
+                  <button
+                    className="Usage_end_btn"
+                    onClick={() => handleUsageEnd(4)}
+                  >
+                    사용종료
+                  </button>
+                )}
+
+                {isTableDisabled(6) && (
+                  <button
+                    className="Usage_end_btn"
+                    onClick={() => handleUsageEnd(6)}
+                  >
+                    사용종료
+                  </button>
+                )}
               </tr>
             </tbody>
           </table>

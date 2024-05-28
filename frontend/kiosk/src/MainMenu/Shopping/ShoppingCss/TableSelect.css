@@ -1,6 +1,6 @@
 .Table-modal {
   width: 700px;
-  height: 500px;
+  height: 600px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -79,6 +79,14 @@
   margin-bottom: 5px; /* Add some space between table and button */
   position: absolute;
   bottom: 20px; /* Position at the bottom of the modal */
+}
+
+.Table_number .Usage_end_btn {
+  font-size: 15px;
+  height: 25px;
+  margin-top: -50px;
+  margin-bottom: -30px;
+  color: red;
 }
 
 @media (max-width: 1024px) and (min-height: 600px) {
