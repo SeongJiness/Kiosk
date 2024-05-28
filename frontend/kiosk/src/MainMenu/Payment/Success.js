@@ -84,14 +84,6 @@ export function SuccessPage() {
               >
                 메인으로 가기
               </button>
-              <a
-                className="btn w-100"
-                href="https://docs.tosspayments.com/guides/payment-widget/integration"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                결제 연동 문서가기
-              </a>
             </div>
           </div>
         </div>
