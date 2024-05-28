@@ -80,9 +80,9 @@ export function SuccessPage() {
             <div className="flex" style={{ gap: "16px" }}>
               <button
                 className="btn w-100"
-                onClick={() => navigate("/menu")} // Use navigate to go to /menu
+                onClick={() => navigate("/")} // Use navigate to go to /menu
               >
-                다시 테스트하기
+                메인으로 가기
               </button>
               <a
                 className="btn w-100"

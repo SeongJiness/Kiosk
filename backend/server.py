@@ -23,9 +23,6 @@ def confirm_payment():
     # 응답을 반환
     return jsonify({'data': confirm_response})
 
-@app.route('/api', methods=['GET'])
-def hello_api():
-    return jsonify({'message': 'hello'})
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)
