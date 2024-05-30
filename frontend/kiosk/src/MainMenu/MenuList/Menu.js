@@ -4,6 +4,7 @@ import "./MenuListCss/Sidebar.css"; // Sidebar CSS 추가
 import ShoppingCart from "../Shopping/ShoppingCart.js";
 import CoffeeCard from "./CoffeeCard.js";
 import Login from "../Login/Login.js"; // 확장자 추가
+import axios from "axios";
 
 import allMenu from "./images/allmenu.png";
 import coffee from "./images/coffee.png";
@@ -44,6 +45,7 @@ function Menu({ onCheckout }) {
   const [cartItems, setCartItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [nickname, setNickname] = useState("");
+  const [mileage, setMileage] = useState(0);
 
   useEffect(() => {
     const loggedIn = sessionStorage.getItem("isLoggedIn");
@@ -52,6 +54,19 @@ function Menu({ onCheckout }) {
       setIsLoggedIn(true);
       setNickname(nickname);
     }
+  }, []);
+
+  useEffect(() => {
+    const fetchMileage = async () => {
+      try {
+        const response = await axios.get("/sandbox-dev/api/v1/mileage");
+        setMileage(response.data.mileage);
+      } catch (error) {
+        console.error("Error fetching mileage:", error);
+      }
+    };
+
+    fetchMileage();
   }, []);
 
   const removeFromCart = (itemToRemove) => {
@@ -158,6 +173,7 @@ function Menu({ onCheckout }) {
             <div>
               <p className="welcome-text">{nickname} 님 환영합니다!</p>
               <p className="status-text">닉네임: {nickname}</p>
+              <p className="status-text">마일리지 : {mileage}</p>
               <p className="status-text status-on">로그인 상태: ON</p>
             </div>
           ) : (

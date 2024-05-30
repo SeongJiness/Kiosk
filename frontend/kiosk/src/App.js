@@ -4,12 +4,6 @@ import Menu from "./MainMenu/MenuList/Menu.js";
 import CheckoutPage from "./MainMenu/Payment/Checkout.js";
 
 function App() {
-  useEffect(() => {
-    fetch("http://localhost:8080/api")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
-
   const [isMainMenuVisible, setIsMainMenuVisible] = useState(false);
   const handleTransitionToMainMenu = () => {
     setIsMainMenuVisible(true);

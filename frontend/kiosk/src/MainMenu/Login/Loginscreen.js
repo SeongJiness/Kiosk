@@ -9,15 +9,28 @@ const LoginScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 로그인 로직 추가
-    if (username === "Admin123" && password === "Admin1234") {
-      sessionStorage.setItem("isLoggedIn", true);
-      sessionStorage.setItem("nickname", "테스트");
-      alert("로그인 성공!");
-      navigate("/"); // 메인 페이지로 리다이렉트
-    } else {
-      alert("로그인 정보가 잘못되었습니다.");
-    }
+
+    fetch("http://localhost:8080/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "로그인 성공!") {
+          sessionStorage.setItem("isLoggedIn", true);
+          sessionStorage.setItem("nickname", data.nickname); // 서버에서 닉네임 받아오기
+          alert("로그인 성공!");
+          navigate("/"); // 메인 페이지로 리다이렉트
+        } else {
+          alert("로그인 정보가 잘못되었습니다.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
