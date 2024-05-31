@@ -12,20 +12,17 @@ export function SuccessPage() {
 
   async function confirmPayment() {
     try {
-      const response = await fetch(
-        "http://localhost:8080/sandbox-dev/api/v1/payments/confirm",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            paymentKey,
-            orderId,
-            amount,
-          }),
-        }
-      );
+      const response = await fetch("/sandbox-dev/api/v1/payments/confirm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          paymentKey,
+          orderId,
+          amount,
+        }),
+      });
 
       if (response.ok) {
         setIsConfirmed(true);
