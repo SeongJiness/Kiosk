@@ -50,6 +50,10 @@ function ShoppingCart({ items, removeFromCart, onCheckout }) {
     const basePrice = 4000;
     const additionalPrice = 500;
 
+    if (price <= 0) {
+      return 0 + "분";
+    }
+
     if (price >= basePrice) {
       // Calculate base duration (2 hours)
       duration += 2 * 60 * 60 * 1000; // 2 hours in milliseconds
