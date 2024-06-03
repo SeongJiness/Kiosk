@@ -9,6 +9,7 @@ from sqlalchemy.exc import IntegrityError
 app = Flask(__name__)
 CORS(app)
 
+
 # "/sandbox-dev/api/v1/payments" 경로에 대한 블루프린트 사용
 app.register_blueprint(payments_bp, url_prefix='/sandbox-dev/api/v1/payments')
 

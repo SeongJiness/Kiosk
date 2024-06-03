@@ -2,7 +2,7 @@ import requests
 import base64
 
 # TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.
-secret_key = "test_ck_XZYkKL4Mrjq5M4vpNEDkV0zJwlEW"
+secret_key = "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"
 
 def confirm_payment_service(payment_info):
     payment_key = payment_info.get('paymentKey')
