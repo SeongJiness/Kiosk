@@ -1,14 +1,14 @@
 import express, { json, urlencoded } from "express";
 import cors from "cors";
 import router from "./payments.router.js";
-import gpio from "@iiot2k/gpio";
+//import gpio from "@iiot2k/gpio";
 import bodyParser from "body-parser";
 import sqlite3 from "sqlite3";
 import session from "express-session";
 
-const RELAY_PIN = 4;
+/*const RELAY_PIN = 4;
 gpio.init_gpio(RELAY_PIN, gpio.GPIO_MODE_OUTPUT, 1);
-const TIME = 1800000;
+const TIME = 1800000;*/
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use(
   })
 );
 
-function convertAmountToMilliseconds(amount) {
+/*function convertAmountToMilliseconds(amount) {
   // 500원당 1800000밀리초
   return (amount / 500) * TIME;
 }
@@ -36,7 +36,7 @@ async function setRelay(amount) {
   await new Promise((resolve) => setTimeout(resolve, INACTIVE_TIME));
   gpio.set_gpio(RELAY_PIN, 1);
   console.log(INACTIVE_TIME);
-}
+}*/
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
@@ -47,7 +47,7 @@ app.use("/sandbox-dev/api/v1/payments", router);
 app.post("/sandbox-dev/api/v1/payments/confirm", (req, res) => {
   const reqData = req.body;
 
-  setRelay(reqData.amount);
+  //setRelay(reqData.amount);
 
   console.log(reqData);
 
@@ -292,12 +292,62 @@ async function runQuery(query, params) {
     });
   });
 }
+
+// 사용자 아이디 확인
+app.post("/check_userId", (req, res) => {
+  const { userId } = req.body;
+
+  console.log("Received body:", req.body); // 콘솔에 출력
+
+  if (!userId) {
+    return res.status(400).json({ message: "아이디를 입력해주세요." });
+  }
+
+  db.get("SELECT * FROM users WHERE username = ?", [userId], (err, user) => {
+    if (err) {
+      return res.status(500).json({ message: "서버 오류가 발생했습니다." });
+    }
+
+    if (!user) {
+      return res.status(404).json({ message: "아이디를 찾을 수 없습니다." });
+    }
+
+    // 아이디가 존재하는 경우
+    return res.status(200).json({ message: "아이디가 확인되었습니다." });
+  });
+});
+
+// 사용자 전화번호 확인
+app.post("/check_userTel", (req, res) => {
+  const { userTel } = req.body;
+
+  if (!userTel) {
+    return res.status(400).json({ message: "전화번호를 입력해주세요." });
+  }
+
+  db.get("SELECT * FROM users WHERE phone = ?", [userTel], (err, user) => {
+    if (err) {
+      return res.status(500).json({ message: "서버 오류가 발생했습니다." });
+    }
+
+    if (!user) {
+      return res.status(404).json({ message: "전화번호를 찾을 수 없습니다." });
+    }
+
+    // 전화번호가 존재하는 경우 비밀번호를 응답으로 보냄 (주의: 보안 취약성 있음)
+    return res.status(200).json({
+      message: "전화번호가 확인되었습니다.",
+      password: user.password, // 실제 서비스에서는 비밀번호 노출 금지!
+    });
+  });
+});
+
 app.listen(5000, () => console.log("Server is Listening..."));
 
 // 프로그램이 종료되기 전에 GPIO 리소스를 해제
-process.on("SIGINT", function () {
+/*process.on("SIGINT", function () {
   gpio.set_gpio(RELAY_PIN, 1);
   gpio.deinit_gpio(RELAY_PIN);
   console.log(" -> program stopped");
   process.exit();
-});
+});*/

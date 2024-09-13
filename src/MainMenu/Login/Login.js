@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   const handleUpdateProfileClick = () => {
-    navigate("/update-profile");
+    navigate("/update");
   };
 
   return (

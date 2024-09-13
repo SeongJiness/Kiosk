@@ -34,6 +34,11 @@ const LoginScreen = () => {
       });
   };
 
+  const handleGoBack = (e) => {
+    e.preventDefault();
+    window.history.back();
+  };
+
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
@@ -56,8 +61,8 @@ const LoginScreen = () => {
         </div>
         <button type="submit">로그인</button>
         {/* eslint-disable-next-line no-restricted-globals */}
-        <button onClick={() => history.back()}>돌아가기</button>
-        <a href="/" className="forgot-password">
+        <button onClick={handleGoBack}>돌아가기</button>
+        <a href="/confirmId" className="forgot-password">
           비밀번호를 잊으셨나요?
         </a>
         <a href="/register" className="register-link">
