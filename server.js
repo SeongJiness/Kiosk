@@ -338,6 +338,7 @@ app.post("/check_userTel", (req, res) => {
     return res.status(200).json({
       message: "전화번호가 확인되었습니다.",
       password: user.password, // 실제 서비스에서는 비밀번호 노출 금지!
+      id: user.username,
     });
   });
 });

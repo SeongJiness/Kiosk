@@ -78,7 +78,15 @@
 
 .login-form .forgot-password {
   margin-top: 10px;
-  display: block;
+  display: inline;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-form .forgot-Id {
+  margin-top: 10px;
+  display: inline;
   color: #666;
   text-decoration: none;
   font-size: 14px;

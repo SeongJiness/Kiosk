@@ -62,8 +62,11 @@ const LoginScreen = () => {
         <button type="submit">로그인</button>
         {/* eslint-disable-next-line no-restricted-globals */}
         <button onClick={handleGoBack}>돌아가기</button>
+        <a href="/forgetId" className="forgot-Id">
+          아이디찾기/
+        </a>
         <a href="/confirmId" className="forgot-password">
-          비밀번호를 잊으셨나요?
+          비밀번호찾기
         </a>
         <a href="/register" className="register-link">
           아이디가 없으신가요? 회원가입

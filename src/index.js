@@ -11,6 +11,7 @@ import RegisterScreen from "./MainMenu/Regeister/RegisterScreen.js"; // 회원�
 import UpdateProfileScreen from "./MainMenu/Login/UpdateProfileScreen.js";
 import ForgetPass from "./MainMenu/Login/ForgetPass.js";
 import ComfirmId from "./MainMenu/Login/ConfirmId.js";
+import ForgetId from "./MainMenu/Login/ForgetId.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,6 +27,7 @@ root.render(
         <Route path="/update" element={<UpdateProfileScreen />} />
         <Route path="/confirmId" element={<ComfirmId />} />
         <Route path="/forgetPass" element={<ForgetPass />} />
+        <Route path="/forgetId" element={<ForgetId />} />
       </Routes>
     </Router>
   </React.StrictMode>

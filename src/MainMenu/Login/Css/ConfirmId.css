@@ -2,3 +2,109 @@ img {
   width: 100px;
   height: 100px;
 }
+
+.ConfirmId-login-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px 60px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.ConfirmId-login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ConfirmId-login-form div {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.ConfirmId-login-form input {
+  width: 100%;
+  padding: 10px 2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.ConfirmId-login-form input:focus {
+  border-color: #824019;
+  box-shadow: 0 0 8px rgba(23, 88, 216, 0.2);
+}
+
+.ConfirmId-login-form input::placeholder {
+  color: #aaa;
+}
+
+.ConfirmId-login-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #be5e24;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px; /* 추가: 버튼 사이 간격 조절 */
+}
+
+.ConfirmId-login-form button:hover {
+  background-color: #824019;
+  transform: translateY(-2px);
+}
+
+.ConfirmId-login-form button:focus {
+  outline: none;
+  box-shadow: 0 0 8px #be5e24;
+}
+
+.ConfirmId-login-form .forgot-password {
+  margin-top: 10px;
+  display: inline;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.ConfirmId-login-form .forgot-Id {
+  margin-top: 10px;
+  display: inline;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.ConfirmId-login-form .forgot-password:hover {
+  color: #333;
+}
+
+.ConfirmId-login-form .register-link {
+  margin-top: 10px;
+  display: block;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ConfirmId-login-form .register-link:hover {
+  color: #333;
+}
+
+.ConfirmId-login-form .ConfirmId-next {
+  margin-bottom: -10px;
+}

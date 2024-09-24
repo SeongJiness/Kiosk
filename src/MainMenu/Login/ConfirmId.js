@@ -39,9 +39,17 @@ const ComfirmId = () => {
     }
   };
 
+  const handleMainClick = () => {
+    navigate("/");
+  };
+
+  const handleId = () => {
+    navigate("/forgetId");
+  };
+
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="ConfirmId-login-form" onSubmit={handleSubmit}>
         <img src="/CaffeIcon/CaffeLogo.png" alt="CaffeLogo" />
         <h3>비밀번호를 찾고자하는 아이디를 입력해주세요.</h3> <br />
         <input
@@ -51,10 +59,27 @@ const ComfirmId = () => {
           onChange={(e) => setUserId(e.target.value)}
         />{" "}
         <br /> {/* 값이 변경될 때마다 상태를 업데이트*/}
-        <button type="submit">다음</button> <br />
+        <button className="ConfirmId-next" type="submit">
+          다음
+        </button>
+        <br />
+        <button onClick={handleMainClick}>메인으로</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
         {/* 에러 메시지 표시 */}
-        아이디가 기억나지 않는다면? <a href="#">아이디 찾기</a>
+        아이디가 기억나지 않는다면?
+        <button
+          onClick={handleId}
+          style={{
+            background: "none",
+            color: "#666",
+            textDecoration: "none",
+            border: "none",
+            padding: "0",
+            cursor: "pointer",
+          }}
+        >
+          아이디 찾기
+        </button>
       </form>
     </div>
   );
