@@ -1,14 +1,14 @@
 import express, { json, urlencoded } from "express";
 import cors from "cors";
 import router from "./payments.router.js";
-//import gpio from "@iiot2k/gpio";
+import gpio from "@iiot2k/gpio";
 import bodyParser from "body-parser";
 import sqlite3 from "sqlite3";
 import session from "express-session";
 
-/*const RELAY_PIN = 4;
+const RELAY_PIN = 4;
 gpio.init_gpio(RELAY_PIN, gpio.GPIO_MODE_OUTPUT, 1);
-const TIME = 1800000;*/
+const TIME = 1800000;
 
 const app = express();
 
@@ -23,9 +23,10 @@ app.use(
   })
 );
 
-/*function convertAmountToMilliseconds(amount) {
+function convertAmountToMilliseconds(amount) {
   // 500원당 1800000밀리초
-  return (amount / 500) * TIME;
+  //return (amount / 500) * TIME;
+  return 20000;
 }
 
 async function setRelay(amount) {
@@ -36,7 +37,7 @@ async function setRelay(amount) {
   await new Promise((resolve) => setTimeout(resolve, INACTIVE_TIME));
   gpio.set_gpio(RELAY_PIN, 1);
   console.log(INACTIVE_TIME);
-}*/
+}
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
@@ -47,7 +48,7 @@ app.use("/sandbox-dev/api/v1/payments", router);
 app.post("/sandbox-dev/api/v1/payments/confirm", (req, res) => {
   const reqData = req.body;
 
-  //setRelay(reqData.amount);
+  setRelay(reqData.amount);
 
   console.log(reqData);
 
@@ -346,9 +347,9 @@ app.post("/check_userTel", (req, res) => {
 app.listen(5000, () => console.log("Server is Listening..."));
 
 // 프로그램이 종료되기 전에 GPIO 리소스를 해제
-/*process.on("SIGINT", function () {
+process.on("SIGINT", function () {
   gpio.set_gpio(RELAY_PIN, 1);
   gpio.deinit_gpio(RELAY_PIN);
   console.log(" -> program stopped");
   process.exit();
-});*/
+});

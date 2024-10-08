@@ -29,6 +29,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-left: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .card img {
@@ -37,6 +38,10 @@
   border-radius: 8px;
   image-rendering: optimizeQuality;
   align-self: center;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card p {

@@ -16,6 +16,10 @@ import americano from "./images/americano.png";
 import caramel from "./images/caramel.png";
 import frappu from "./images/frappuccino.png";
 import dalgona from "./images/dalgona.png";
+import cafelatte from "./images/cafelatte.jpg";
+import cafemoca from "./images/cafemoca.jpg";
+import hazelnuts from "./images/hazelnuts.jpg";
+import cappuccino from "./images/cappuccino.jpg";
 
 function Sidebar() {
   return (
@@ -93,6 +97,8 @@ function Menu({ onCheckout }) {
     }
   };
 
+  //카페 메뉴 아이템리스트
+
   const menuItems = [
     {
       name: "아메리카노",
@@ -119,28 +125,28 @@ function Menu({ onCheckout }) {
       price: "4500",
     },
     {
-      name: "아메리",
-      image: americano,
-      description: "Caff Americano",
-      price: "4000",
-    },
-    {
-      name: "카라멜",
-      image: caramel,
-      description: "Caramel Macchiato",
-      price: "4500",
-    },
-    {
-      name: "프라",
-      image: frappu,
-      description: "Frappuccino Coffee",
+      name: "카페라떼",
+      image: cafelatte,
+      description: "CafeLatte",
       price: "5000",
     },
     {
-      name: "달고나",
-      image: dalgona,
-      description: "Dalgona Coffee",
+      name: "카페모카",
+      image: cafemoca,
+      description: "CafeMoca",
+      price: "5500",
+    },
+    {
+      name: "헤이즐넛",
+      image: hazelnuts,
+      description: "Hazelnuts",
       price: "4500",
+    },
+    {
+      name: "카푸치노",
+      image: cappuccino,
+      description: "Cappuccino",
+      price: "5500",
     },
     // 더 많은 메뉴 아이템들을 추가할 수 있습니다.
   ];
@@ -164,6 +170,16 @@ function Menu({ onCheckout }) {
     );
   };
 
+  const handleCategoryClick = (category) => {
+    if (category === "allmenu") alert("전체 메뉴");
+    else if (category === "coffee") alert("커피 메뉴");
+    else if (category === "milk") alert("우유");
+    else if (category === "bobaan") alert("버블티");
+    else if (category === "iceCream") alert("아이스크림");
+    else if (category === "dessert") alert("디저트");
+    else alert("잘못된 클릭입니다.");
+  };
+
   return (
     <div className="menu-container">
       <Sidebar /> {/* Sidebar 통합 */}
@@ -184,27 +200,87 @@ function Menu({ onCheckout }) {
           )}
         </div>
         <div className="card-container">
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => handleCategoryClick("allmenu")}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCategoryClick("allmenu");
+              }
+            }}
+          >
             <img src={allMenu} alt="AllMenu" />
             <p>AllMenu</p>
           </div>
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => handleCategoryClick("coffee")}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCategoryClick("coffee");
+              }
+            }}
+          >
             <img src={coffee} alt="Coffee" />
             <p>Coffee</p>
           </div>
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => handleCategoryClick("milk")}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCategoryClick("milk");
+              }
+            }}
+          >
             <img src={milk} alt="Milky milk" />
             <p>Milky milk</p>
           </div>
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => handleCategoryClick("bobaan")}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCategoryClick("bobaan");
+              }
+            }}
+          >
             <img src={bobaan} alt="Bobaan" />
             <p>Bobaan</p>
           </div>
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => handleCategoryClick("iceCream")}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCategoryClick("iceCream");
+              }
+            }}
+          >
             <img src={iceCream} alt="Ice cream" />
             <p>Ice cream</p>
           </div>
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => handleCategoryClick("dessert")}
+            role="button"
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCategoryClick("dessert");
+              }
+            }}
+          >
             <img src={dessert} alt="Dessert" />
             <p>Dessert</p>
           </div>
